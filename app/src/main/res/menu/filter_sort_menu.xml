@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/sort_by_price_asc"
+        android:title="По цене (возрастание)" />
+    <item
+        android:id="@+id/sort_by_price_desc"
+        android:title="По цене (убывание)" />
+    <item
+        android:id="@+id/sort_by_name"
+        android:title="По названию" />
+    <item
+        android:id="@+id/filter_in_stock"
+        android:title="Только в наличии" />
+</menu>

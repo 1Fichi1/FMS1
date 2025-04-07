@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Стиль для закруглённых полей ввода -->
+    <style name="RoundedTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearance">@style/RoundedShapeAppearance</item>
+        <item name="boxStrokeColor">@color/input_highlight</item>
+        <item name="hintTextColor">@color/input_highlight</item>
+    </style>
+
+    <style name="RoundedShapeAppearance" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- Стиль для тонкого и закруглённого BottomNavigationView -->
+    <style name="SlimRoundedBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="shapeAppearanceOverlay">@style/SlimRoundedBottomNavShape</item>
+    </style>
+
+    <style name="SlimRoundedBottomNavShape" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">12dp</item>
+        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+</resources>
