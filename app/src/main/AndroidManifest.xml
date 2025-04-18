@@ -58,6 +58,17 @@
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
+
+        <!-- Активность деталей товара -->
+        <activity
+            android:name=".ProductDetailActivity"
+            android:exported="false" />
+
+        <!-- Активность панели администратора -->
+        <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

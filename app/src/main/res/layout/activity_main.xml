@@ -4,45 +4,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:padding="16dp">
 
     <!-- Заголовок -->
     <TextView
         android:id="@+id/home_title"
+        style="@style/Text.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Добро пожаловать в FMS"
-        android:textSize="28sp"
-        android:textColor="@color/text_primary"
-        android:textStyle="bold"
+        android:text="FMS Store"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp" />
 
-    <!-- Подсказка -->
+    <!-- Подзаголовок -->
     <TextView
+        android:id="@+id/home_subtitle"
+        style="@style/Text.Subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Выберите раздел внизу для начала"
-        android:textSize="16sp"
-        android:textColor="@color/text_secondary"
+        android:text="Ваши фитнес-продукты ждут!"
         app:layout_constraintTop_toBottomOf="@id/home_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="8dp" />
+
+    <!-- Кнопка админ-панели -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/admin_button"
+        style="@style/Button.Accent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Панель администратора"
+        app:layout_constraintTop_toBottomOf="@id/home_subtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp" />
 
     <!-- Нижняя навигация -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="56dp"
+        android:background="@color/card_background"
         app:menu="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/primary"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        style="@style/SlimRoundedBottomNavigation" />
+        app:itemIconTint="@color/text_primary"
+        app:itemTextColor="@color/text_primary"
+        app:itemBackground="@null"
+        app:elevation="8dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.fms;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private List<Product> products = new ArrayList<>();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private Context context;
+
+    // Updated constructor to accept List<Product> and Context
+    public ProductAdapter(List<Product> products, Context context) {
+        this.products = products;
+        this.context = context;
+    }
+
+    // Remove the old constructor
+    // public ProductAdapter(Context context) { this.context = context; }
 
     public void setProducts(List<Product> products) {
         this.products = products;
@@ -43,7 +54,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = products.get(position);
-        Context context = holder.itemView.getContext();
 
         holder.productName.setText(product.getName());
         holder.productDetails.setText(String.format("Цена: %.2f | В наличии: %d",
@@ -58,6 +68,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         } else {
             holder.productImage.setImageResource(android.R.drawable.ic_menu_gallery);
         }
+
+        // Клик на элемент для открытия деталей
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ProductDetailActivity.class);
+            intent.putExtra("product", product);
+            context.startActivity(intent);
+        });
 
         // Проверка состояния "Избранное"
         if (auth.getCurrentUser() != null) {
@@ -89,7 +106,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             db.collection("favorites").document(docId).get()
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful() && task.getResult().exists()) {
-                            // Удаление из избранного
                             db.collection("favorites").document(docId)
                                     .delete()
                                     .addOnSuccessListener(aVoid -> {
@@ -97,7 +113,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                                         Toast.makeText(context, "Удалено из избранного", Toast.LENGTH_SHORT).show();
                                     });
                         } else {
-                            // Добавление в избранное
                             Map<String, Object> favorite = new HashMap<>();
                             favorite.put("userId", auth.getCurrentUser().getUid());
                             favorite.put("productName", product.getName());

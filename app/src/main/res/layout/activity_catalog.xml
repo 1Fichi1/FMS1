@@ -4,17 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:padding="16dp">
 
-    <!-- Иконка профиля -->
+    <!-- Профиль -->
     <ImageButton
         android:id="@+id/profile_button"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/ic_profile"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Profile"
-        app:tint="@color/primary_dark"
+        android:background="@null"
+        app:tint="@color/text_primary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
@@ -23,80 +23,38 @@
     <!-- Заголовок -->
     <TextView
         android:id="@+id/catalog_title"
+        style="@style/Text.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Каталог товаров"
-        android:textSize="24sp"
-        android:textColor="@color/text_primary"
-        android:textStyle="bold"
+        android:text="Каталог"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp" />
+        android:layout_marginTop="16dp" />
 
-    <!-- Поле поиска -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/search_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/catalog_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:hintEnabled="true"
-        app:hintTextColor="@color/input_highlight"
-        style="@style/RoundedTextInputLayout"
-        app:endIconMode="clear_text"
-        app:endIconTint="@color/input_highlight">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/search_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Поиск товаров..."
-            android:inputType="text"
-            android:textColor="@color/input_text"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Кнопка фильтра/сортировки -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/filter_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Фильтр и сортировка"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/primary"
-        app:layout_constraintTop_toBottomOf="@id/search_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp" />
-
-    <!-- Список товаров -->
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/product_list"
+        android:id="@+id/catalog_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/filter_button"
+        app:layout_constraintTop_toBottomOf="@id/catalog_title"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp" />
 
     <!-- Нижняя навигация -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="56dp"
+        android:background="@color/card_background"
         app:menu="@menu/bottom_nav_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/primary"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        style="@style/SlimRoundedBottomNavigation" />
+        app:itemIconTint="@color/text_primary"
+        app:itemTextColor="@color/text_primary"
+        app:itemBackground="@null"
+        app:elevation="8dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

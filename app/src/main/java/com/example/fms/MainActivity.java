@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,5 +38,9 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
+
+        // Обработка кнопки админ-панели
+        MaterialButton adminButton = findViewById(R.id.admin_button);
+        adminButton.setOnClickListener(v -> startActivity(new Intent(this, AdminActivity.class)));
     }
 }

@@ -1,9 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme -->
     <style name="Base.Theme.FMS" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Colors for the new dark theme -->
+        <item name="colorPrimary">@color/accent_green</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:windowBackground">@color/background</item>
     </style>
 
+    <!-- Application theme -->
     <style name="Theme.FMS" parent="Base.Theme.FMS" />
+
+    <!-- Style for titles -->
+    <style name="Text.Title">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">sans-serif-bold</item>
+    </style>
+
+    <!-- Style for subtitles -->
+    <style name="Text.Subtitle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Style for buttons -->
+    <style name="Button.Accent">
+        <item name="android:backgroundTint">@color/accent_green</item>
+        <item name="android:textColor">@color/background</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <!-- Style for cards -->
+    <style name="Card">
+        <item name="android:background">@color/card_background</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">4dp</item>
+    </style>
+
+    <!-- Style for bottom navigation -->
+    <style name="SlimRoundedBottomNavigation">
+        <item name="android:background">@color/card_background</item>
+        <item name="itemIconTint">@color/text_primary</item>
+        <item name="itemTextColor">@color/text_primary</item>
+        <item name="elevation">8dp</item>
+    </style>
+
+    <!-- Style for text input layouts -->
+    <style name="RoundedTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/text_primary</item>
+        <item name="hintTextColor">@color/text_secondary</item>
+        <item name="boxBackgroundColor">@color/card_background</item>
+        <item name="android:textColorHint">@color/text_secondary</item>
+    </style>
 </resources>

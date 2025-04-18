@@ -7,52 +7,36 @@
     android:background="@color/background"
     android:padding="16dp">
 
-    <!-- Логотип -->
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/logo"
-        android:contentDescription="Логотип FMS"
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/login_title"
+        style="@style/Text.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Вход"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp" />
 
-    <!-- Заголовок -->
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Добро пожаловать!"
-        android:textSize="28sp"
-        android:textColor="@color/text_primary"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
-    <!-- Поле Email -->
+    <!-- Поле email -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/login_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"
-        app:hintEnabled="true"
-        app:hintTextColor="@color/input_highlight"
+        android:layout_marginTop="24dp"
         style="@style/RoundedTextInputLayout">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Электронная почта"
+            android:hint="Email"
             android:inputType="textEmailAddress"
-            android:textColor="@color/input_text" />
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Поле пароля -->
@@ -64,55 +48,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
-        app:hintEnabled="true"
-        app:hintTextColor="@color/input_highlight"
-        style="@style/RoundedTextInputLayout"
-        app:passwordToggleEnabled="true">
-
+        style="@style/RoundedTextInputLayout">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Пароль"
             android:inputType="textPassword"
-            android:textColor="@color/input_text" />
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Кнопка входа -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/login_button"
+        style="@style/Button.Accent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Войти"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/primary"
         app:layout_constraintTop_toBottomOf="@id/password_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp" />
 
-    <!-- Ссылка "Забыли пароль?" -->
-    <TextView
-        android:id="@+id/forgot_password_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Забыли пароль?"
-        android:textColor="@color/accent"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/login_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
-    <!-- Ссылка "Зарегистрируйтесь" -->
+    <!-- Ссылка на регистрацию -->
     <TextView
         android:id="@+id/register_link"
+        style="@style/Text.Subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Нет аккаунта? Зарегистрируйтесь"
-        android:textColor="@color/accent"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/forgot_password_link"
+        android:textColor="@color/accent_green"
+        app:layout_constraintTop_toBottomOf="@id/login_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />

@@ -10,12 +10,10 @@
     <!-- Заголовок -->
     <TextView
         android:id="@+id/profile_title"
+        style="@style/Text.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Настройки профиля"
-        android:textSize="24sp"
-        android:textColor="@color/text_primary"
-        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,8 +28,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp"
-        app:hintEnabled="true"
-        app:hintTextColor="@color/input_highlight"
         style="@style/RoundedTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -40,7 +36,8 @@
             android:layout_height="wrap_content"
             android:hint="Имя"
             android:inputType="textPersonName"
-            android:textColor="@color/input_text" />
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Поле Email -->
@@ -52,8 +49,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
-        app:hintEnabled="true"
-        app:hintTextColor="@color/input_highlight"
         style="@style/RoundedTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -63,32 +58,35 @@
             android:hint="Электронная почта"
             android:inputType="textEmailAddress"
             android:enabled="false"
-            android:textColor="@color/input_text" />
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Кнопка сохранения -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/save_button"
+        style="@style/Button.Accent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Сохранить"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/primary"
         app:layout_constraintTop_toBottomOf="@id/email_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp" />
 
     <!-- Кнопка выхода -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/logout_button"
+        style="@style/Button.Accent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Выйти"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/accent"
         app:layout_constraintTop_toBottomOf="@id/save_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

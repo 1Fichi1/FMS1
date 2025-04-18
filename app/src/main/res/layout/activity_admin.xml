@@ -9,100 +9,106 @@
 
     <!-- Заголовок -->
     <TextView
-        android:id="@+id/register_title"
+        android:id="@+id/admin_title"
         style="@style/Text.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Регистрация"
+        android:text="Добавить товар"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="16dp" />
 
-    <!-- Поле имени -->
+    <!-- Поле названия -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/name_layout"
+        android:id="@+id/product_name_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/register_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
-        style="@style/RoundedTextInputLayout">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Имя"
-            android:inputType="textPersonName"
-            android:textColor="@color/text_primary"
-            android:textColorHint="@color/text_secondary" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Поле email -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/name_layout"
+        app:layout_constraintTop_toBottomOf="@id/admin_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
         style="@style/RoundedTextInputLayout">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email_input"
+            android:id="@+id/product_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
+            android:hint="Название товара"
+            android:inputType="text"
             android:textColor="@color/text_primary"
             android:textColorHint="@color/text_secondary" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Поле пароля -->
+    <!-- Поле цены -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password_layout"
+        android:id="@+id/product_price_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/email_layout"
+        app:layout_constraintTop_toBottomOf="@id/product_name_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         style="@style/RoundedTextInputLayout">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password_input"
+            android:id="@+id/product_price_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Пароль"
-            android:inputType="textPassword"
+            android:hint="Цена"
+            android:inputType="numberDecimal"
             android:textColor="@color/text_primary"
             android:textColorHint="@color/text_secondary" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Кнопка регистрации -->
+    <!-- Поле количества -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/product_stock_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/product_price_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        style="@style/RoundedTextInputLayout">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/product_stock_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="В наличии"
+            android:inputType="number"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Поле URL -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/product_image_url_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/product_stock_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        style="@style/RoundedTextInputLayout">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/product_image_url_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="URL изображения"
+            android:inputType="textUri"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Кнопка добавления -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/register_button"
+        android:id="@+id/add_product_button"
         style="@style/Button.Accent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Зарегистрироваться"
-        app:layout_constraintTop_toBottomOf="@id/password_layout"
+        android:text="Добавить товар"
+        app:layout_constraintTop_toBottomOf="@id/product_image_url_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp" />
-
-    <!-- Ссылка на вход -->
-    <TextView
-        android:id="@+id/login_link"
-        style="@style/Text.Subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Уже есть аккаунт? Войдите"
-        android:textColor="@color/accent_green"
-        app:layout_constraintTop_toBottomOf="@id/register_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

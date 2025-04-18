@@ -2,40 +2,35 @@ package com.example.fms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class FavoritesActivity extends AppCompatActivity {
-    private RecyclerView favoritesList;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private List<Product> productList = new ArrayList<>();
     private ProductAdapter adapter;
-    private FirebaseFirestore db;
-    private FirebaseAuth auth;
-    private List<Product> products;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
 
-        db = FirebaseFirestore.getInstance();
-        auth = FirebaseAuth.getInstance();
-        products = new ArrayList<>();
+        recyclerView = findViewById(R.id.favorites_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new ProductAdapter(productList, this);
+        recyclerView.setAdapter(adapter);
 
-        favoritesList = findViewById(R.id.favorites_list);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        favoritesList.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ProductAdapter();
-        favoritesList.setAdapter(adapter);
-
         bottomNavigationView.setSelectedItemId(R.id.nav_favorites);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
@@ -61,32 +56,35 @@ public class FavoritesActivity extends AppCompatActivity {
             startActivity(new Intent(this, ProfileActivity.class));
         });
 
-        loadFavorites();
+        loadFavoriteItems();
     }
 
-    private void loadFavorites() {
-        if (auth.getCurrentUser() != null) {
-            db.collection("favorites")
-                    .whereEqualTo("userId", auth.getCurrentUser().getUid())
-                    .get()
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            products.clear();
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                String name = document.getString("productName");
-                                Double price = document.getDouble("productPrice");
-                                Long stock = document.getLong("productStock");
-                                String imageUrl = document.getString("productImageUrl");
-                                products.add(new Product(name, price, stock.intValue(), imageUrl));
-                            }
-                            adapter.setProducts(products);
-                        } else {
-                            Toast.makeText(this, "Ошибка загрузки: " + task.getException().getMessage(),
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        } else {
-            Toast.makeText(this, "Войдите, чтобы увидеть избранное", Toast.LENGTH_SHORT).show();
+    private void loadFavoriteItems() {
+        if (auth.getCurrentUser() == null) {
+            Toast.makeText(this, "Войдите, чтобы просмотреть избранное", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+        db.collection("favorites")
+                .whereEqualTo("userId", auth.getCurrentUser().getUid())
+                .addSnapshotListener((snapshot, e) -> {
+                    if (e != null) {
+                        Toast.makeText(this, "Ошибка загрузки избранного", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (snapshot != null) {
+                        productList.clear();
+                        for (DocumentSnapshot doc : snapshot) {
+                            Product product = doc.toObject(Product.class);
+                            if (product != null) {
+                                productList.add(product);
+                            }
+                        }
+                        adapter.setProducts(productList);
+                        if (productList.isEmpty()) {
+                            Toast.makeText(this, "Избранное пусто", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }
